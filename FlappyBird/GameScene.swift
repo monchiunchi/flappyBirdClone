@@ -28,9 +28,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate {
     let userDefaults: UserDefaults = UserDefaults.standard//userDefaults
     var scoreLabelNode: SKLabelNode!
     var bestScoreLabelNode: SKLabelNode!
-    var itemScoreLabelNode: SKLabelNode!//ラベルノード
+    var itemScoreLabelNode: SKLabelNode!
+    var goLabelNode: SKLabelNode!//ラベルノード
     
     var audioPlayer: AVAudioPlayer!
+    var bgmAudioPlayer: AVAudioPlayer!
     
     
     //didMove はviewが読み込まれた時
@@ -42,7 +44,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate {
         physicsWorld.contactDelegate = self
         //当たり判定デリゲートをselfで委託
         
-        
         scrollNode = SKNode()
         addChild(scrollNode) //どこにaddChildしたのか
         //動きを止めるための表示しないスプライト
@@ -52,6 +53,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate {
         
         itemNode = SKSpriteNode()
         scrollNode.addChild(itemNode)
+        
+        let bgmAudioPath = Bundle.main.path(forResource: "bgm1", ofType:"mp3")!
+        let bgmAudioUrl = URL(fileURLWithPath: bgmAudioPath)
+        bgmAudioPlayer = try! AVAudioPlayer(contentsOf: bgmAudioUrl)
+        bgmAudioPlayer.play()
+        
         
         SetUpGround()
         SetUpCloud()
@@ -296,6 +303,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate {
         itemScoreLabelNode.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.left
         itemScoreLabelNode.text = "Item: \(itemScore)"
         self.addChild(itemScoreLabelNode)
+        
+    }
+    
+    func SetUpgoLabel(){
+        goLabelNode = SKLabelNode()
+        goLabelNode.fontColor = UIColor.red
+        goLabelNode.zPosition = 100
+        goLabelNode.position = CGPoint(x: self.frame.size.width / 2, y: self.frame.size.height / 2)
+        goLabelNode.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.center
+        goLabelNode.text = "GAME OVER"
+        self.addChild(goLabelNode)
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
@@ -332,8 +350,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate {
             
             
         }else{
-            print("GameOver")
+            
+            SetUpgoLabel()
             scrollNode.speed = 0
+            
+            bgmAudioPlayer.stop()//bgm
             
             birdNode.physicsBody?.collisionBitMask = groundCategory
             
@@ -350,10 +371,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate, AVAudioPlayerDelegate {
         itemScore = 0
         scoreLabelNode.text = "SCORE: \(score)"
         itemScoreLabelNode.text = "Item: \(itemScore)"
+        goLabelNode.text = ""
         birdNode.position = CGPoint(x: self.frame.size.width * 0.2, y: self.frame.size.height * 0.7)
         birdNode.physicsBody?.velocity = CGVector.zero
         birdNode.physicsBody?.collisionBitMask = groundCategory | wallCategory
         birdNode.zRotation = 0.0
+        
+        bgmAudioPlayer.play()//bgm
         
         wallNode.removeAllChildren()
         

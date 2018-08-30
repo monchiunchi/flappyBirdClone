@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		985573F02137BD0C00B2775A /* cursor7.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 985573EF2137BD0C00B2775A /* cursor7.mp3 */; };
+		985573F22137C40D00B2775A /* bgm1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 985573F12137C40D00B2775A /* bgm1.mp3 */; };
 		9865648121330054004701D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9865648021330054004701D0 /* AppDelegate.swift */; };
 		9865648321330054004701D0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9865648221330054004701D0 /* ViewController.swift */; };
 		9865648621330054004701D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9865648421330054004701D0 /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		985573EF2137BD0C00B2775A /* cursor7.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cursor7.mp3; sourceTree = "<group>"; };
+		985573F12137C40D00B2775A /* bgm1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bgm1.mp3; sourceTree = "<group>"; };
 		9865647D21330054004701D0 /* FlappyBird.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlappyBird.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9865648021330054004701D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9865648221330054004701D0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				9865648421330054004701D0 /* Main.storyboard */,
 				9865648721330055004701D0 /* Assets.xcassets */,
 				9865649221330490004701D0 /* GameScene.swift */,
+				985573F12137C40D00B2775A /* bgm1.mp3 */,
 				985573EF2137BD0C00B2775A /* cursor7.mp3 */,
 				9865648921330055004701D0 /* LaunchScreen.storyboard */,
 				9865648C21330055004701D0 /* Info.plist */,
@@ -132,6 +135,7 @@
 				9865648821330055004701D0 /* Assets.xcassets in Resources */,
 				985573F02137BD0C00B2775A /* cursor7.mp3 in Resources */,
 				9865648621330054004701D0 /* Main.storyboard in Resources */,
+				985573F22137C40D00B2775A /* bgm1.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
